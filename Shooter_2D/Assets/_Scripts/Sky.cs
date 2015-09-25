@@ -2,11 +2,12 @@
 using System.Collections;
 
 public class Sky : MonoBehaviour {
-
+    //Initialize the speed of the background
     public float Speed;
 	// Use this for initialization
 	void Start () {
-        Debug.Log("Player Started");
+
+        //call the reset method to move the background
         this._Reset();
 	}
 	
