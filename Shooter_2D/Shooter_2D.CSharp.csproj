@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\BalloonController.cs" />
+    <Compile Include="Assets\_Scripts\Boundary.cs" />
     <Compile Include="Assets\_Scripts\PlayerController.cs" />
     <Compile Include="Assets\_Scripts\Sky.cs" />
   </ItemGroup>
