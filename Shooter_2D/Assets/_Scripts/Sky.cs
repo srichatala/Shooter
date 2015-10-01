@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+Author: Sri Chatala
+File : Sky.cs
+Created Date: Spe 24,2015
+Descriptopn: Sky controller script controll the background of the game
+Laster Updated: Oct 01,2015
+*/
+
+
+using UnityEngine;
 using System.Collections;
 
 public class Sky : MonoBehaviour {
