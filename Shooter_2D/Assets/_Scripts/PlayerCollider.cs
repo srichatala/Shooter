@@ -14,10 +14,11 @@ public class PlayerCollider : MonoBehaviour {
 
     //Private variables
     private AudioSource[] _gameAuidoSource;
-    private AudioSource _devilAudioSource;
+    private AudioSource _devilAudioSource,_goldAudioSource;
 
     public Text livesLabel;
     public Text scoreLabel;
+    public int _score = 0;
     public int lives = 5;
     public Text gameOver;
     public Text finalScore;
@@ -26,6 +27,7 @@ public class PlayerCollider : MonoBehaviour {
 	void Start () {
         this._gameAuidoSource = this.GetComponents<AudioSource>();
         this._devilAudioSource = this._gameAuidoSource[1];
+        this._goldAudioSource = this._gameAuidoSource[2];
         this._SetLives();
         this.gameOver.enabled = false;
         this.finalScore.enabled = false;
@@ -37,7 +39,12 @@ public class PlayerCollider : MonoBehaviour {
 	}
     void OnTriggerEnter2D(Collider2D otherGameObject)
     {
-        if(otherGameObject.tag == "Devil")
+        if (otherGameObject.tag == "Gold")
+        {
+            this._goldAudioSource.Play();
+            this._score += 100;
+        }
+        if (otherGameObject.tag == "Devil")
         {
             this._devilAudioSource.Play();
             this.lives -= 1;
@@ -46,11 +53,13 @@ public class PlayerCollider : MonoBehaviour {
                 this._EndGame();
             }
         }
+        
         this._SetLives();
     }
     private void _SetLives()
     {
         this.livesLabel.text = "Lives:" + this.lives;
+        this.scoreLabel.text = "Score:" + this._score;
     }
     private void _EndGame()
     {
@@ -59,6 +68,6 @@ public class PlayerCollider : MonoBehaviour {
         this.scoreLabel.enabled = false;
         this.gameOver.enabled = true;
         this.finalScore.enabled = true;
-        this.finalScore.text = "Final Score:"+lives;
+        this.finalScore.text = "Final Score:"+this._score;
     }
 }
