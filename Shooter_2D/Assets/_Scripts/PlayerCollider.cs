@@ -22,6 +22,8 @@ public class PlayerCollider : MonoBehaviour {
     public int lives = 5;
     public Text gameOver;
     public Text finalScore;
+   // public Text restartGame;
+    //private bool restart;
         
     // Use this for initialization
 	void Start () {
@@ -31,11 +33,21 @@ public class PlayerCollider : MonoBehaviour {
         this._SetLives();
         this.gameOver.enabled = false;
         this.finalScore.enabled = false;
+        //this.restartGame.enabled = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
+        //Debug.Log(restart);
+        //if (!restart)
+        //{
+        //    Debug.Log("inside restart");
+        //    if (Input.GetKeyUp(KeyCode.R))
+        //    {
+        //        Debug.Log("inside Key");
+        //        Application.LoadLevel(Application.loadedLevel);
+        //    }
+        //}
 	}
     void OnTriggerEnter2D(Collider2D otherGameObject)
     {
@@ -60,6 +72,7 @@ public class PlayerCollider : MonoBehaviour {
     {
         this.livesLabel.text = "Lives:" + this.lives;
         this.scoreLabel.text = "Score:" + this._score;
+        
     }
     private void _EndGame()
     {
@@ -68,6 +81,8 @@ public class PlayerCollider : MonoBehaviour {
         this.scoreLabel.enabled = false;
         this.gameOver.enabled = true;
         this.finalScore.enabled = true;
+        //this.restartGame.enabled = true;
         this.finalScore.text = "Final Score:"+this._score;
+       // this.restartGame.text = "To Restart Press R";
     }
 }
